@@ -4,12 +4,12 @@ import { getDataApi } from '../../utils/getDataApi';
 
 import { ROOT_INDEX } from '../../constants/root'; 
 
+import Error from '../Error'; 
+
 import './Comics.css';
 
 class Comics {
-    async render() {
-        const data = await getDataApi.getData(API_URL + URL_COMICS);
-
+    renderComics(data) {
         let htmlContent = '';
 
         data.forEach(({id, title, thumbnail: {extension, path}}) => {
@@ -35,6 +35,11 @@ class Comics {
         `;
 
         ROOT_INDEX.innerHTML =  htmlWrapper;
+    }
+
+    async render() {
+        const data = await getDataApi.getData(API_URL + URL_COMICS); 
+        data ? this.renderComics(data) :  Error.render();
     }
     eventListener() {
         document.querySelectorAll('.comics__item').forEach(element => {
