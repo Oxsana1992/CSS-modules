@@ -22,7 +22,7 @@ class Comics {
                 htmlContent += `
                     <li class="comics__item" data-uri="${uri}">
                         <span class="comics__title">${title}</span>
-                        <img class="img_contain comics__img" src="${imgSrc}" >
+                        <img class="img_contain  comics__img" src="${imgSrc}" >
                     </li>
                 `;
             }
@@ -39,7 +39,6 @@ class Comics {
     eventListener() {
         document.querySelectorAll('.comics__item').forEach(element => {
             const uri = element.getAttribute('data-uri');
-            
             element.addEventListener('click', () => {
                 console.log(uri);
             })
