@@ -4,6 +4,8 @@ import { getDataApi } from '../../utils/getDataApi';
 
 import { ROOT_INDEX } from '../../constants/root'; 
 
+import Characters from '../Characters'; 
+
 import Error from '../Error'; 
 
 import './Comics.css';
@@ -45,7 +47,7 @@ class Comics {
         document.querySelectorAll('.comics__item').forEach(element => {
             const uri = element.getAttribute('data-uri');
             element.addEventListener('click', () => {
-                console.log(uri);
+                Characters.render(uri);
             })
         });
     }
