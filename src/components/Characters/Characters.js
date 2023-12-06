@@ -4,6 +4,8 @@ import { getDataApi } from '../../utils/getDataApi';
 
 import { ROOT_MODAL } from '../../constants/root';
 
+import Notification from '../Notification';
+
 import imgCloseWhite from './img/close-whigt.svg';
 
 import './Characters.css';
@@ -39,14 +41,10 @@ class Characters {
         ROOT_MODAL.innerHTML = htmlWrapper; 
     }; 
 
-    renderNotification() {
-        console.log('Данных нет');
-    }
-
     async render(uri) {
         const data = await getDataApi.getData(uri);
      
-        data.length ? this.renderContent(data) : this.renderNotification();
+        data.length ? this.renderContent(data) : Notification.render();
     }
 }
 
